@@ -14,4 +14,6 @@ class Graph {
     public:
         Graph(int v);
         ~Graph();
+        void print();
+        void inputMatrix(string matrix);
 };
