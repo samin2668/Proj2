@@ -1,21 +1,35 @@
 #include "header.h"
 
-Graph::Graph(int v)
+Graph::Graph(int p, int r, string units)
 {
-    this->vertices = v;
+    this->vertices = p + r;
+    this->processes = p;
+    this->resources = r;
     adjMatrix = new bool*[vertices];
     for(int i = 0; i < vertices; i++){
         adjMatrix[i] = new bool[vertices];
         for(int j = 0; j < vertices; j++)
             adjMatrix[i][j] = false;
     }
+
+    resourceUnits = new int[r];
+    stringstream ss(units);
+    string temp;
+    for(int i = 0; i < r; i++)
+    {
+        getline(ss, temp, ',');
+        resourceUnits[i] = stoi(temp);
+    }
+
 }
 
 Graph::~Graph(){
     for(int i = 0; i < vertices; i++)
         delete [] this->adjMatrix[i];
     delete [] this->adjMatrix;
+    delete [] this->resourceUnits;
     this->adjMatrix = NULL;
+    this->resourceUnits = NULL;
 }
 
 void Graph::inputMatrix(string matrix){

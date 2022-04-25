@@ -1,6 +1,6 @@
 #include "header.h"
 
-string parseFile(string fileName, int &p, int &r){
+string parseFile(string fileName, int &p, int &r, string &units){
     string proc = "num_processes";
     string reso = "num_resources";
     string resourcesVal;
@@ -30,6 +30,7 @@ string parseFile(string fileName, int &p, int &r){
     ss.clear();
     ss << input;
     ss >> resourcesVal;
+    units = resourcesVal;
     while(ss >> temp)
         matrix += temp + "\n";
     ss.str("");
