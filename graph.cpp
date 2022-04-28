@@ -20,7 +20,7 @@ Graph::Graph(int p, int r, string units)
         getline(ss, temp, ',');
         resourceUnits[i] = stoi(temp);
     }
-
+    this->isDeadlock = false;
 }
 
 Graph::~Graph(){
@@ -50,7 +50,7 @@ void Graph::inputMatrix(string matrix){
     }
 }
 
-void Graph::print(){
+void Graph::printGraph(){
     cout << " | ";
     for(int i = 0; i < vertices; i++)
         cout << i << " ";
@@ -67,4 +67,44 @@ void Graph::print(){
         }
         cout << endl;
     }
+}
+
+void Graph::printUnits(){
+    for(int i = 0; i < resources; i++){
+        cout << "R" << i+1 << ": " << resourceUnits[i] << endl;
+    }
+}
+
+void Graph::deadlockDetection(){
+    //checking allocations
+    int r = 0;
+    for(int i = processes; i < vertices; i++){
+        for(int j = 0; j < processes; j++){
+            if(adjMatrix[i][j] == true){
+                resourceUnits[r]--;
+                if(resourceUnits[r] <= -1)
+                    isDeadlock = true;
+            }
+        }
+        r++;
+    }
+    //checking requests
+    r = 0;
+    for(int i = 0; i < processes; i++){
+        for(int j = processes; j < vertices; j++){
+            if(adjMatrix[i][j] == true){
+                resourceUnits[r]--;
+                if(resourceUnits[r] <= -1)
+                    isDeadlock = true;
+            }
+        }
+        r++;
+    }
+}
+
+string Graph::printState(){
+    if(isDeadlock == true)
+        return "\nDeadlock Found\n";
+    else
+        return "\nNo Deadlocks Found\n";
 }

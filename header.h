@@ -17,6 +17,10 @@ class Graph {
     public:
         Graph(int p, int r, string units);
         ~Graph();
-        void print();
+        bool isDeadlock;
+        void printGraph();
+        void printUnits();
         void inputMatrix(string matrix);
+        void deadlockDetection();
+        string printState();
 };
