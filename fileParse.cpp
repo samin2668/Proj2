@@ -1,6 +1,8 @@
 #include "header.h"
 
 string parseFile(string fileName, int &p, int &r, string &units){
+    
+    //string variables for parsing
     string proc = "num_processes";
     string reso = "num_resources";
     string resourcesVal;
@@ -8,6 +10,8 @@ string parseFile(string fileName, int &p, int &r, string &units){
     ifstream ifs(fileName);
     string temp;
     stringstream ss;
+
+    //removing comments
     while(getline(ifs, temp)){
         if(!temp.empty())
         {
@@ -15,6 +19,8 @@ string parseFile(string fileName, int &p, int &r, string &units){
                 ss << temp << endl;
         }    
     }
+
+    //geting resource and process count
     string input;
     while(ss >> temp){
         if (temp.find(proc) != std::string::npos){
@@ -26,11 +32,15 @@ string parseFile(string fileName, int &p, int &r, string &units){
         else
             input += temp + "\n";
     }
+
+    //getting resource units as string
     ss.str("");
     ss.clear();
     ss << input;
     ss >> resourcesVal;
     units = resourcesVal;
+
+    //getting matrix as string
     while(ss >> temp)
         matrix += temp + "\n";
     ss.str("");

@@ -1,7 +1,9 @@
 #include "header.h"
 
+//constructor
 Graph::Graph(int p, int r, string units)
 {
+    //initializing matrix
     this->vertices = p + r;
     this->processes = p;
     this->resources = r;
@@ -12,6 +14,7 @@ Graph::Graph(int p, int r, string units)
             adjMatrix[i][j] = false;
     }
 
+    //initializing available resource units
     resourceUnits = new int[r];
     stringstream ss(units);
     string temp;
@@ -20,9 +23,12 @@ Graph::Graph(int p, int r, string units)
         getline(ss, temp, ',');
         resourceUnits[i] = stoi(temp);
     }
+
+    //default 
     this->isDeadlock = false;
 }
 
+//destructor 
 Graph::~Graph(){
     for(int i = 0; i < vertices; i++)
         delete [] this->adjMatrix[i];
@@ -32,6 +38,7 @@ Graph::~Graph(){
     this->resourceUnits = NULL;
 }
 
+//reading in matrix string and setting edges in graph
 void Graph::inputMatrix(string matrix){
     stringstream input(matrix);
     string temp;
@@ -50,6 +57,7 @@ void Graph::inputMatrix(string matrix){
     }
 }
 
+//printing matrix for debugging
 void Graph::printGraph(){
     cout << " | ";
     for(int i = 0; i < vertices; i++)
@@ -69,12 +77,14 @@ void Graph::printGraph(){
     }
 }
 
+//printing current available units for debugging
 void Graph::printUnits(){
     for(int i = 0; i < resources; i++){
         cout << "R" << i+1 << ": " << resourceUnits[i] << endl;
     }
 }
 
+//for finding deadlocks by walking matrix and removing units from resources 
 void Graph::deadlockDetection(){
     //checking allocations
     int r = 0;
@@ -102,6 +112,7 @@ void Graph::deadlockDetection(){
     }
 }
 
+//print if the graph is in deadlock or not
 string Graph::printState(){
     if(isDeadlock == true)
         return "\nDeadlock Found\n";
