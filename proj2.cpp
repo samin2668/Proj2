@@ -1,7 +1,32 @@
 #include "header.h"
 
-int main(int arc, char *argv[])
+int main(int argc, char *argv[])
 {
+    try{
+        if(argc != 2)
+            throw(argc);
+        else{
+            ifstream file(argv[1]);
+            if(file.fail())
+            {
+                file.close();
+                throw exception();
+            }
+        }
+    }
+
+    catch(int c){
+        cerr << "ERROR: expected input file name as command-line argument.\n"
+            << "Either there too few or too many command-line arguments.\n"
+            << "Please refer to README for instructions on how to run program.\n";
+            exit(1);
+    }
+
+    catch(const exception& e){
+        cerr << "ERROR input file could not be opened or could not be found.\n";
+        exit(1);
+    }
+
     int processNum, resourceNum;
     string units;
 

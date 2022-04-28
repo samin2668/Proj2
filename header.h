@@ -4,6 +4,7 @@
 #include <fstream>
 #include <sstream>
 #include <vector>
+#include <exception>
 using namespace std;
 
 //function to parse input file
