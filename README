@@ -12,5 +12,4 @@ if the make file does not work then compile as so
 
 then run the program as so 
 replacing <input-file> with the input text file
-    ./a.out <input-file>
-testing 
+    ./a.out <input-file> 
