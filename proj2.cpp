@@ -13,6 +13,7 @@ int main(int argc, char *argv[])
                 file.close();
                 throw exception();
             }
+            file.close();
         }
     }
 
