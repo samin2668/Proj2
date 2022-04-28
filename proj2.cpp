@@ -2,6 +2,7 @@
 
 int main(int argc, char *argv[])
 {
+    //Error handling for wrong command-line arguments and for file i/o errors
     try{
         if(argc != 2)
             throw(argc);
