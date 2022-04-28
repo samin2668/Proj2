@@ -41,12 +41,11 @@ int main(int argc, char *argv[])
     //reading in matrix 
     G->inputMatrix(input);
 
-    //G->printGraph();
+    G->printGraph();
+    G->printUnits();
 
     //determine if graph is in deadlock
     G->deadlockDetection();
-
-    //G->printUnits();
 
     //printing the current state of graph
     cout << G->printState();

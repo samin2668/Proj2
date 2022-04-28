@@ -59,28 +59,42 @@ void Graph::inputMatrix(string matrix){
 
 //printing matrix for debugging
 void Graph::printGraph(){
-    cout << " | ";
-    for(int i = 0; i < vertices; i++)
-        cout << i << " ";
+    cout << "Printing the adjacency matrix for the resource graph\n\n";
+    cout << "  |";
+    for(int i = 0; i < processes; i++)
+        cout << "P" << i << "|";
+    for(int i = 0; i < resources; i++)
+        cout << "R" << i << "|";
     cout << endl;
-    for(int i = 0; i < vertices*2+2; i++)
+    for(int i = 0; i < vertices*3+3; i++)
         cout << "-";
     cout << endl;
-    for(int i = 0; i < vertices; i++)
+    for(int i = 0; i < processes; i++)
     {
-        cout << i << "| ";
+        cout << "P" << i << "| ";
         for(int j = 0; j < vertices; j++)
         {
-            cout << adjMatrix[i][j] << " ";
+            cout << adjMatrix[i][j] << "  ";
         }
         cout << endl;
     }
+    for(int i = processes; i < vertices; i++)
+    {
+        cout << "R" << i-resources << "| ";
+        for(int j = 0; j < vertices; j++)
+        {
+            cout << adjMatrix[i][j] << "  ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
 //printing current available units for debugging
 void Graph::printUnits(){
+    cout << "Printing the number of units for each resource\n\n";
     for(int i = 0; i < resources; i++){
-        cout << "R" << i+1 << ": " << resourceUnits[i] << endl;
+        cout << "R" << i << ": " << resourceUnits[i] << endl;
     }
 }
 
