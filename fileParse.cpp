@@ -15,7 +15,7 @@ string parseFile(string fileName, int &p, int &r, string &units){
     while(getline(ifs, temp)){
         if(!temp.empty())
         {
-            if (temp.find("%") == std::string::npos)
+            if (temp.find("%") == string::npos)
                 ss << temp << endl;
         }    
     }
