@@ -209,7 +209,7 @@ void Graph::bankersAlgorithm(){
         printf(" P%d ->", ans[i]);
       printf(" P%d", ans[processes - 1]);
     }
-
+     printf("\n");
 
 
 
