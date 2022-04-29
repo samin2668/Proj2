@@ -1,23 +1,20 @@
 # Proj2
 
-to compile and run program 
+to compile and run program type the following into the terminal (will require make)
 replace <file> with input file name
 
     make file=<file>
 
-if above does not work then do steps bellow
+    example: make file=input.txt
 
-to compile simply use the make file by typing in "make" into the terminal
-this should generate a file called project2
+if above does not work then do the following
+replace <input-file> with input file name
 
-to run the program simply type into the terminal 
-    ./project2 <input-file>
-replace <input-file> with the input text file
+    compile:
+        g++ proj2.cpp graph.cpp fileParse.cpp
 
+    run:
+        ./a.out <input-file>
 
-if the make file does not work then compile as so
-    g++ proj2.cpp graph.cpp fileParse.cpp
+        example: ./a.out input.txt
 
-then run the program as so 
-replacing <input-file> with the input text file
-    ./a.out <input-file> 
