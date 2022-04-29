@@ -7,7 +7,7 @@ num_processes=3
 num_resources=3
 
 % Next, list the number of units of each resource in a single row, separated by commas (,)
-2,1,1
+1,0,0
 
 % Then list the adjacency matrix. All processes will be listed first, followed by all of the resources. 
 % The order of resources in this list must be the same as the ordering of resources in the list above which specified the numer of units of each resource.

@@ -14,15 +14,15 @@ int main(int arc, char *argv[])
     //reading in matrix 
     G->inputMatrix(input);
 
-    //G->printGraph();
+    
 
-    //determine if graph is in deadlock
-    G->deadlockDetection();
+    //graph partioning 
+    G->matrixPartitioning();
 
-    //G->printUnits();
+   
 
-    //printing the current state of graph
-    cout << G->printState();
+    //bankers algorithm  to detect deadlock
+    G->bankersAlgorithm();
 
     //cout << "\ndone\n";
 
