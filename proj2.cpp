@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     int processNum, resourceNum;
     string units;
 
-    //parse the input file and extract data as stirngs
+    //parse the input file and extract data as strings
     string input = parseFile(argv[1], processNum, resourceNum, units);
 
     //initializing graph
@@ -40,6 +40,11 @@ int main(int argc, char *argv[])
 
     //reading in matrix 
     G->inputMatrix(input);
+
+    //printing
+    G->printGraph();
+    G->printUnits();
+
     //graph partioning 
     G->matrixPartitioning();
 

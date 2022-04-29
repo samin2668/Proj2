@@ -1,4 +1,12 @@
 # Proj2
+
+to compile and run program 
+replace <file> with input file name
+
+    make file=<file>
+
+if above does not work then do steps bellow
+
 to compile simply use the make file by typing in "make" into the terminal
 this should generate a file called project2
 

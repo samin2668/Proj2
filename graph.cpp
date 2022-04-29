@@ -100,29 +100,44 @@ void Graph::inputMatrix(string matrix){
 
 //printing matrix for debugging
 void Graph::printGraph(){
-    cout << " | ";
-    for(int i = 0; i < vertices; i++)
-        cout << i << " ";
+    cout << "\nPrinting the adjacency matrix for the resource graph\n\n";
+    cout << "  |";
+    for(int i = 0; i < processes; i++)
+        cout << "P" << i << "|";
+    for(int i = 0; i < resources; i++)
+        cout << "R" << i << "|";
     cout << endl;
-    for(int i = 0; i < vertices*2+2; i++)
+    for(int i = 0; i < vertices*3+3; i++)
         cout << "-";
     cout << endl;
-    for(int i = 0; i < vertices; i++)
+    for(int i = 0; i < processes; i++)
     {
-        cout << i << "| ";
+        cout << "P" << i << "| ";
         for(int j = 0; j < vertices; j++)
         {
-            cout << adjMatrix[i][j] << " ";
+            cout << adjMatrix[i][j] << "  ";
         }
         cout << endl;
     }
+    for(int i = processes; i < vertices; i++)
+    {
+        cout << "R" << i-resources << "| ";
+        for(int j = 0; j < vertices; j++)
+        {
+            cout << adjMatrix[i][j] << "  ";
+        }
+        cout << endl;
+    }
+    cout << endl;
 }
 
 //printing current available units for debugging
 void Graph::printUnits(){
+    cout << "Printing the number of units for each resource\n\n";
     for(int i = 0; i < resources; i++){
-        cout << "R" << i+1 << ": " << resourceUnits[i] << endl;
+        cout << "R" << i << ": " << resourceUnits[i] << endl;
     }
+    cout <<endl;
 }
 
 //breaking down the matrix to get allocation matrix and request allocation 
@@ -167,7 +182,7 @@ void Graph::bankersAlgorithm(){
               if (f[i] == 0) {
                 //if not finish set flag to 0
                 int flag = 0;
-                //check through the coulumns if need > resource
+                //check through the columns if need > resource
                 for (j = 0; j < resources; j++) {
                     if (needMatrix[i][j] > resourceUnits[j]){
                        // break if need exceeds what we have
@@ -179,7 +194,7 @@ void Graph::bankersAlgorithm(){
                if (flag == 0) {
                     //process finished add to  sequence array
                     ans[ind++] = i;
-                   // recalculate reaource units
+                   // recalculate resource units
                     for (int y = 0; y < resources; y++)
                         resourceUnits[y] += allocationMatrix[i][y];
                     // i process finished  indicated in finished array 
@@ -204,14 +219,11 @@ void Graph::bankersAlgorithm(){
      // checking if it finished checking for uncompleted 
       if(flag==1)
     {
-      printf("Following is the SAFE Sequence no deadlock\n");
+      printf("Following is the SAFE Sequence no deadlock\n\n");
       for (i = 0; i < processes - 1; i++)
         printf(" P%d ->", ans[i]);
       printf(" P%d", ans[processes - 1]);
     }
-     printf("\n");
-
-
-
+    printf("\n\n");
 
 }
