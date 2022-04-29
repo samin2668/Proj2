@@ -204,7 +204,7 @@ void Graph::bankersAlgorithm(){
      // checking if it finished checking for uncompleted 
       if(flag==1)
     {
-      printf("Following is the SAFE Sequence no deadlock\n");
+      printf("Following is the SAFE Sequence for no deadlock\n");
       for (i = 0; i < processes - 1; i++)
         printf(" P%d ->", ans[i]);
       printf(" P%d", ans[processes - 1]);
