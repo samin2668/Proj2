@@ -40,18 +40,11 @@ int main(int argc, char *argv[])
 
     //reading in matrix 
     G->inputMatrix(input);
+    //graph partioning 
+    G->matrixPartitioning();
 
-    //G->printGraph();
-
-    //determine if graph is in deadlock
-    G->deadlockDetection();
-
-    //G->printUnits();
-
-    //printing the current state of graph
-    cout << G->printState();
-
-    //cout << "\ndone\n";
+    //bankers algorithm  to detect deadlock
+    G->bankersAlgorithm();
 
     //deallocating
     delete G;
